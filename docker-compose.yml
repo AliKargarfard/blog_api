@@ -1,0 +1,39 @@
+# docker-compose.yml
+services:
+  web:
+    build:
+      context: .
+      target: dev  # یا prod برای تولید
+    command: python manage.py runserver 0.0.0.0:8000
+    stdin_open: true  # ویژه ویندوز
+    tty: true         # ویژه ویندوز
+    volumes:
+      - .:/app
+      - /app/core/__pycache__  # جلوگیری از خطاهای کش
+    ports:
+      - "8000:8000"
+    env_file:
+      - .env
+    depends_on:
+      - db
+      - redis
+
+  db:
+    image: postgres:15
+    container_name: db
+    environment:
+      POSTGRES_HOST: ${DB_HOST}
+      POSTGRES_USER: ${DB_USER}
+      POSTGRES_PASSWORD: ${DB_PASSWORD}
+      POSTGRES_DB: ${DB_NAME}
+    volumes:
+      - postgres_data:/var/lib/postgresql/data
+
+  redis:
+    image: redis:7
+    volumes:
+      - redis_data:/data
+
+volumes:
+  postgres_data:
+  redis_data:

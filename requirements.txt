@@ -1,0 +1,31 @@
+# --- هسته جنگو و پسگرس ---
+Django==4.2.6
+djangorestframework==3.14.0
+psycopg2-binary==2.9.9  # برای PostgreSQL
+python-decouple==3.8  # مدیریت متغیرهای محیطی
+
+# --- توسعه و تست ---
+django-debug-toolbar==4.1.0  # دیباگ در محیط توسعه
+pytest==7.4.0  # تست‌نویسی
+pytest-django==4.5.2
+factory-boy==3.3.0  # ساخت داده‌های تست
+coverage==7.3.2  # گزارش کاورج
+ipython==8.14.0  # shell_plus پیشرفته
+django-seed==0.3.1
+Faker==37.5.3
+
+# --- کیفیت کد ---
+flake8==6.1.0  # آنالیز کد
+black==23.9.1  # فرمت خودکار
+mypy==1.5.1  # تایپ چک
+isort==5.12.0  # مرتب‌سازی ایمپورت‌ها
+
+# --- مستندات ---
+drf-spectacular==0.26.2  # OpenAPI/Swagger
+
+
+
+
+# --- تولید (Deployment) ---
+# gunicorn==21.2.0  # سرور تولید
+# whitenoise==6.5.0  # مدیریت فایل‌های استاتیک
